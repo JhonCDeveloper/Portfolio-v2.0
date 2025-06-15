@@ -10,7 +10,8 @@ export default defineConfig({
       plugins: [
         tailwindcss(),
         autoprefixer()
-      ]
+      ],
+      base: '/Portfolio-v2.0/',
     }
   }
 })
