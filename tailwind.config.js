@@ -1,4 +1,3 @@
-// tailwind.config.js
 export default {
   content: [
     "./index.html",
@@ -7,12 +6,14 @@ export default {
   theme: {
     extend: {
       colors: {
-        'primary': '#3B82F6', // Ejemplo: añade colores personalizados
+        mainBlack: '#000000',
+        fontGray: '#BDBEBE',
+        darkRed: '#7D0A0A',
       },
       fontFamily: {
-        'sans': ['Inter', 'sans-serif'], // Ejemplo: añade fuentes personalizadas
+        mona: ['Mona Sans', 'sans-serif'],
       },
+    }, 
   },
   plugins: []
-}
 }
