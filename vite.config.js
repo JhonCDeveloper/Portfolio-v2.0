@@ -1,17 +1,12 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
-import tailwindcss from 'tailwindcss'
-import autoprefixer from 'autoprefixer'
 
 export default defineConfig({
   plugins: [react()],
-  css: {
-    postcss: {
-      plugins: [
-        tailwindcss(),
-        autoprefixer()
-      ],
-      base: '/Portfolio-v2.0/',
-    }
+  base: '/Portfolio-v2.0/', // Asegúrate que coincida con tu repo
+  build: {
+    outDir: 'dist',
+    assetsDir: 'assets',
+    emptyOutDir: true
   }
 })
