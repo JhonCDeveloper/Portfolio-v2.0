@@ -9,7 +9,7 @@
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",
-    "deploy": "gh-pages -d dist"
+    "deploy": "gh-pages -d dist -r https://github.com/JhonCDeveloper/portfolio-v2.0.git"
   },
   "dependencies": {
     "framer-motion": "^12.15.0",
