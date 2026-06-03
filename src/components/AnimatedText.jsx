@@ -1,7 +1,8 @@
 import { useState, useEffect } from "react";
 
+const words = ["SOFTWARE", "DEVELOPER"];
+
 function AnimatedText() {
-  const words = ["SOFTWARE", "DEVELOPER"];
   const [index, setIndex] = useState(0);
   const [displayText, setDisplayText] = useState("");
   const [deleting, setDeleting] = useState(false);
@@ -11,7 +12,7 @@ function AnimatedText() {
     const speed = deleting ? 50 : 100;
 
     const timer = setTimeout(() => {
-      setDisplayText(deleting 
+      setDisplayText(deleting
         ? currentWord.substring(0, displayText.length - 1)
         : currentWord.substring(0, displayText.length + 1)
       );
@@ -25,7 +26,7 @@ function AnimatedText() {
     }, speed);
 
     return () => clearTimeout(timer);
-  }, [displayText, deleting, index, words]);
+  }, [displayText, deleting, index]);
 
   return (
     <span className="text-darkRed transition-colors duration-300 inline-block min-w-[200px] md:min-w-[300px] text-left">
