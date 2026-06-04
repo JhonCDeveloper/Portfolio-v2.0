@@ -12,6 +12,7 @@
     "deploy": "gh-pages -d dist -r https://github.com/JhonCDeveloper/portfolio-v2.0.git"
   },
   "dependencies": {
+    "@vercel/analytics": "^2.0.1",
     "framer-motion": "^12.15.0",
     "react": "^19.1.0",
     "react-dom": "^19.1.0",
