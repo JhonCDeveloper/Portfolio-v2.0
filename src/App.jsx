@@ -1,7 +1,7 @@
 import Header from './components/Header'
 import Intro from "./components/Intro";
 import GridBackground from "./components/GridBackground";
-import { Analytics } from "@vercel/analytics/next"
+import { Analytics } from "@vercel/analytics/react"
 
 
 function App() {
