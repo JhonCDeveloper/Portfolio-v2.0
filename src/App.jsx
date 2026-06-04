@@ -2,6 +2,7 @@ import Header from './components/Header'
 import Intro from "./components/Intro";
 import GridBackground from "./components/GridBackground";
 import { Analytics } from "@vercel/analytics/react"
+import { SpeedInsights } from "@vercel/speed-insights/react"
 
 
 function App() {
