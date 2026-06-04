@@ -3,6 +3,7 @@ import AvailabilityTag from "./AvailabilityTag";
 import WelcomeMessage from "./WelcomeMessage";
 import Descriptors from "./Descriptors";
 import HeroCTA from "./HeroCTA";
+import ScrollIndicator from "./ScrollIndicator";
 
 function Intro() {
   return (
@@ -17,8 +18,9 @@ function Intro() {
           </span>
         </h1>
         <Descriptors />
+        <ScrollIndicator />
       </div>
-      
+
       <HeroCTA />
     </main>
   );
