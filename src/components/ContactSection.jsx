@@ -2,7 +2,6 @@ export default function ContactSection() {
   return (
     <section id="contact">
       <div className="sec-header">
-        <span className="sec-num">03</span>
         <h2 className="sec-title">Contact</h2>
         <div className="sec-line"></div>
       </div>
