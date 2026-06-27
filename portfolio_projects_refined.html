@@ -1,0 +1,117 @@
+
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;700;800&family=DM+Mono:wght@300;400&display=swap');
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+  .port { background: #080808; font-family: 'Syne', sans-serif; position: relative; overflow: hidden; border-radius: 10px; }
+  .noise { position: absolute; inset: 0; opacity: 0.035; background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E"); background-size: 180px; pointer-events: none; z-index: 1; }
+  .grid-lines { position: absolute; inset: 0; z-index: 1; pointer-events: none; background-image: linear-gradient(rgba(255,255,255,0.025) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,0.025) 1px, transparent 1px); background-size: 80px 80px; }
+  .accent-line { position: absolute; left: 0; top: 0; bottom: 0; width: 2px; background: linear-gradient(to bottom, transparent, #8B1A1A 20%, #8B1A1A 80%, transparent); z-index: 3; pointer-events: none; }
+
+  nav { position: relative; z-index: 10; display: flex; justify-content: space-between; align-items: center; padding: 28px 48px; border-bottom: 1px solid rgba(255,255,255,0.04); }
+  .logo { font-family: 'DM Mono', monospace; font-size: 12px; color: rgba(255,255,255,0.35); letter-spacing: 0.15em; }
+  .nav-links { display: flex; gap: 36px; list-style: none; }
+  .nav-links a { font-size: 11px; font-family: 'DM Mono', monospace; color: rgba(255,255,255,0.3); text-decoration: none; letter-spacing: 0.15em; text-transform: uppercase; }
+  .nav-links a.active { color: rgba(255,255,255,0.75); }
+
+  section { position: relative; z-index: 5; padding: 64px 48px 80px; }
+  .sec-header { display: flex; align-items: baseline; gap: 20px; margin-bottom: 56px; }
+  .sec-num { font-family: 'DM Mono', monospace; font-size: 11px; color: #8B1A1A; letter-spacing: 0.2em; }
+  .sec-title { font-size: 48px; font-weight: 800; color: #fff; letter-spacing: -0.03em; text-transform: uppercase; line-height: 1; }
+  .sec-line { flex: 1; height: 1px; background: rgba(255,255,255,0.06); margin-left: 16px; align-self: center; }
+
+  /* Grid unificado: 2 columnas, mismo ancho, alto automático */
+  .projects-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.06); }
+  .proj-card { background: #080808; padding: 32px; cursor: pointer; transition: background 0.2s; display: flex; flex-direction: column; }
+  .proj-card:hover { background: #0f0f0f; }
+  .proj-card:hover .proj-arrow { opacity: 1; transform: translate(0, 0); }
+  .proj-card:hover .proj-num { color: #8B1A1A; }
+  .proj-top { display: flex; justify-content: space-between; align-items: flex-start; margin-bottom: 20px; }
+  .proj-num { font-family: 'DM Mono', monospace; font-size: 11px; color: rgba(255,255,255,0.2); letter-spacing: 0.15em; transition: color 0.2s; }
+  .proj-arrow { font-size: 16px; color: rgba(255,255,255,0.4); opacity: 0; transform: translate(-4px, 4px); transition: all 0.2s; }
+  .featured-badge { display: inline-block; font-family: 'DM Mono', monospace; font-size: 10px; color: #8B1A1A; letter-spacing: 0.2em; text-transform: uppercase; margin-bottom: 12px; }
+  .proj-name { font-size: 22px; font-weight: 700; color: #fff; letter-spacing: -0.02em; margin-bottom: 10px; line-height: 1.1; }
+  .proj-desc { font-size: 13px; color: rgba(255,255,255,0.4); line-height: 1.6; margin-bottom: 24px; font-family: 'DM Mono', monospace; font-weight: 300; flex: 1; }
+  .proj-tags { display: flex; flex-wrap: wrap; gap: 6px; }
+  .tag-pill { font-family: 'DM Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.3); letter-spacing: 0.1em; padding: 4px 10px; border: 1px solid rgba(255,255,255,0.08); text-transform: uppercase; }
+</style>
+
+<div class="port">
+  <div class="noise"></div>
+  <div class="grid-lines"></div>
+  <div class="accent-line"></div>
+
+  <nav>
+    <div class="logo">JC — Portfolio</div>
+    <ul class="nav-links">
+      <li><a>Home</a></li>
+      <li><a class="active">Projects</a></li>
+      <li><a>About</a></li>
+      <li><a>Contact</a></li>
+    </ul>
+  </nav>
+
+  <section>
+    <div class="sec-header">
+      <span class="sec-num">01</span>
+      <h2 class="sec-title">Projects</h2>
+      <div class="sec-line"></div>
+    </div>
+    <div class="projects-grid">
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-num">01</span>
+          <span class="proj-arrow">↗</span>
+        </div>
+        <span class="featured-badge">— Featured</span>
+        <div class="proj-name">Nomad AI</div>
+        <div class="proj-desc">Voice-enabled travel assistant. GPT-4o tool calling, RAG con FAISS, TTS. React/Vite frontend + FastAPI backend, desplegado en Railway.</div>
+        <div class="proj-tags">
+          <span class="tag-pill">React</span>
+          <span class="tag-pill">TypeScript</span>
+          <span class="tag-pill">FastAPI</span>
+          <span class="tag-pill">GPT-4o</span>
+          <span class="tag-pill">FAISS</span>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-num">02</span>
+          <span class="proj-arrow">↗</span>
+        </div>
+        <span class="featured-badge" style="opacity:0">—</span>
+        <div class="proj-name">FinBot</div>
+        <div class="proj-desc">Asistente financiero AI multilingüe. Tool calling, RAG, semantic caching, voz. Frontend inspirado en la estética de Linear.</div>
+        <div class="proj-tags">
+          <span class="tag-pill">LangChain</span>
+          <span class="tag-pill">ElevenLabs</span>
+          <span class="tag-pill">RAG</span>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-num">03</span>
+          <span class="proj-arrow">↗</span>
+        </div>
+        <span class="featured-badge" style="opacity:0">—</span>
+        <div class="proj-name">AttackMind</div>
+        <div class="proj-desc">Proyecto de cybersecurity / red team enfocado en ethical hacking. Detalles disponibles en el repositorio.</div>
+        <div class="proj-tags">
+          <span class="tag-pill">Security</span>
+          <span class="tag-pill">Python</span>
+        </div>
+      </div>
+      <div class="proj-card">
+        <div class="proj-top">
+          <span class="proj-num">04</span>
+          <span class="proj-arrow">↗</span>
+        </div>
+        <span class="featured-badge" style="opacity:0">—</span>
+        <div class="proj-name">EventgerJS</div>
+        <div class="proj-desc">Proyecto frontend. Detalles y stack disponibles en el repositorio de GitHub.</div>
+        <div class="proj-tags">
+          <span class="tag-pill">JavaScript</span>
+        </div>
+      </div>
+    </div>
+  </section>
+</div>

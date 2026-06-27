@@ -7,7 +7,7 @@ import ScrollIndicator from "./ScrollIndicator";
 
 function Intro() {
   return (
-    <main className="flex-grow grid place-items-center min-h-[80vh]">
+    <main id="intro" className="flex-grow grid place-items-center min-h-[80vh]">
       <div className="w-full max-w-screen-xl px-8 mx-auto">
         <AvailabilityTag />
         <WelcomeMessage />

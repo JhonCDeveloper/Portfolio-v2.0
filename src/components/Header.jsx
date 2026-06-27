@@ -1,5 +1,4 @@
 import { useState } from 'react';
-import { NavLink } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
 
 function Header() {
@@ -8,23 +7,24 @@ function Header() {
   const toggleMenu = () => setIsOpen(!isOpen);
   const closeMenu = () => setIsOpen(false);
 
-  // Función para centralizar los estilos dinámicos de los enlaces de escritorio
-  const linkStyles = ({ isActive }) =>
-    `text-[11px] font-mona tracking-[0.15em] uppercase transition-all duration-300 ${
-      isActive 
-        ? 'text-lightText font-bold' 
-        : 'text-softGray hover:text-darkRed hover:font-bold'
-    }`;
+  const scrollToSection = (id) => {
+    closeMenu();
+    if (id === 'intro') {
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+    } else {
+      const element = document.getElementById(id);
+      if (element) {
+        element.scrollIntoView({ behavior: 'smooth' });
+      }
+    }
+  };
 
-  // Estilos para los enlaces del menú móvil
-  const mobileLinkStyles = ({ isActive }) =>
-    `text-[20px] font-syne tracking-[0.25em] uppercase transition-all duration-300 block py-4 text-center ${
-      isActive 
-        ? 'text-white font-bold' 
-        : 'text-softGray hover:text-darkRed hover:font-bold'
-    }`;
+  const linkStyles = 
+    "cursor-pointer text-[11px] font-mona tracking-[0.15em] uppercase transition-all duration-300 text-softGray hover:text-darkRed hover:font-bold";
 
-  // Animaciones para el overlay del menú móvil (framer-motion)
+  const mobileLinkStyles = 
+    "cursor-pointer text-[20px] font-syne tracking-[0.25em] uppercase transition-all duration-300 block py-4 text-center text-softGray hover:text-darkRed hover:font-bold";
+
   const menuVariants = {
     closed: {
       opacity: 0,
@@ -56,38 +56,35 @@ function Header() {
   };
 
   return (
-    <header className="bg-mainBlack text-fontGray px-6 py-5 md:px-[3rem] md:py-[1.7rem] relative z-50">
+    <header className="bg-mainBlack text-fontGray px-6 py-5 md:px-[3rem] md:py-[1.7rem] sticky top-0 z-50">
       <nav className="flex justify-between items-center max-w-7xl mx-auto w-full">
-        {/* LOGO */}
         <div className="text-[12px] text-softGray tracking-widest uppercase font-dm z-50">
           JC - Portfolio
         </div>
         
-        {/* MENÚ DE NAVEGACIÓN - ESCRITORIO */}
         <ul className="hidden md:flex justify-around gap-[36px] items-center">
           <li>
-            <NavLink to="/" className={linkStyles}>
+            <button onClick={() => scrollToSection('intro')} className={linkStyles}>
               HOME
-            </NavLink>
+            </button>
           </li>
           <li>
-            <NavLink to="/projects" className={linkStyles}>
+            <button onClick={() => scrollToSection('projects')} className={linkStyles}>
               PROJECTS
-            </NavLink>
+            </button>
           </li>
           <li>
-            <NavLink to="/about" className={linkStyles}>
+            <button onClick={() => scrollToSection('about')} className={linkStyles}>
               ABOUT
-            </NavLink>
+            </button>
           </li>
           <li>
-            <NavLink to="/contact" className={linkStyles}>
+            <button onClick={() => scrollToSection('contact')} className={linkStyles}>
               CONTACT
-            </NavLink>
+            </button>
           </li>
         </ul>
 
-        {/* BOTÓN DE MENÚ MÓVIL (HAMBURGUESA) */}
         <button 
           onClick={toggleMenu}
           className="flex flex-col justify-center items-center md:hidden z-50 w-8 h-8 focus:outline-none"
@@ -111,7 +108,6 @@ function Header() {
         </button>
       </nav>
 
-      {/* MENÚ MÓVIL (OVERLAY DESPLEGABLE) */}
       <AnimatePresence>
         {isOpen && (
           <motion.div
@@ -123,24 +119,24 @@ function Header() {
           >
             <ul className="flex flex-col gap-4 w-full px-8">
               <motion.li variants={linkVariants}>
-                <NavLink to="/" className={mobileLinkStyles} onClick={closeMenu}>
+                <button onClick={() => scrollToSection('intro')} className={mobileLinkStyles}>
                   HOME
-                </NavLink>
+                </button>
               </motion.li>
               <motion.li variants={linkVariants}>
-                <NavLink to="/projects" className={mobileLinkStyles} onClick={closeMenu}>
+                <button onClick={() => scrollToSection('projects')} className={mobileLinkStyles}>
                   PROJECTS
-                </NavLink>
+                </button>
               </motion.li>
               <motion.li variants={linkVariants}>
-                <NavLink to="/about" className={mobileLinkStyles} onClick={closeMenu}>
+                <button onClick={() => scrollToSection('about')} className={mobileLinkStyles}>
                   ABOUT
-                </NavLink>
+                </button>
               </motion.li>
               <motion.li variants={linkVariants}>
-                <NavLink to="/contact" className={mobileLinkStyles} onClick={closeMenu}>
+                <button onClick={() => scrollToSection('contact')} className={mobileLinkStyles}>
                   CONTACT
-                </NavLink>
+                </button>
               </motion.li>
             </ul>
           </motion.div>
@@ -150,4 +146,4 @@ function Header() {
   );
 }
 
-export default Header;
+export default Header;

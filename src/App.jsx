@@ -1,12 +1,13 @@
-import Header from './components/Header'
+import Header from './components/Header';
 import Intro from "./components/Intro";
 import GridBackground from "./components/GridBackground";
-import { Analytics } from "@vercel/analytics/react"
-import { SpeedInsights } from "@vercel/speed-insights/react"
-
+import ProjectsSection from "./components/ProjectsSection";
+import AboutSection from "./components/AboutSection";
+import ContactSection from "./components/ContactSection";
+import { Analytics } from "@vercel/analytics/react";
+import { SpeedInsights } from "@vercel/speed-insights/react";
 
 function App() {
-
   return (
     <div className="min-h-screen bg-mainBlack text-white">
       <div
@@ -16,15 +17,15 @@ function App() {
         }}
       />
       <Analytics />
+      <SpeedInsights />
       <GridBackground />
       <Header />
       <Intro />
-
-
-
+      <ProjectsSection />
+      <AboutSection />
+      <ContactSection />
     </div>
-  )
-
+  );
 }
 
-export default App;
+export default App;
